@@ -221,3 +221,8 @@ main { padding-block: 3.5rem 5rem; }
 }
 .list-row button:hover { background: var(--kon); }
 .mailing-list .list-note { font-family: var(--font-small); font-size: 0.78rem; }
+
+/* Family mark: centred at the top of every Yoso site, linking to the hub */
+.family-mark { display: block; width: 48px; margin: 1.5rem auto 0; line-height: 0; }
+.family-mark img { display: block; width: 48px; height: 48px; }
+.family-mark:focus-visible { outline: 2px solid var(--kin); outline-offset: 4px; }
