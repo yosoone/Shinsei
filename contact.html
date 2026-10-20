@@ -40,6 +40,23 @@
 </article>
 
 </main>
+<!-- Mailing list: one Buttondown list for all Yoso sites; the hidden tag records that the sign-up came from Shinsei. -->
+<section class="mailing-list" aria-labelledby="list-h">
+  <div>
+    <h2 id="list-h">Mailing list</h2>
+    <p>New scrolls, paintings and exhibitions, sent by email now and then.</p>
+  </div>
+  <form action="https://buttondown.com/api/emails/embed-subscribe/yoso" method="post" target="_blank">
+    <label for="list-email">Email address</label>
+    <div class="list-row">
+      <input id="list-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </div>
+    <input type="hidden" name="tag" value="shinsei">
+    <input type="hidden" name="embed" value="1">
+    <p class="list-note">Sent through Buttondown. Confirm by email; unsubscribe any time.</p>
+  </form>
+</section>
 <footer class="site-footer">
   <p>&copy; 2026 <a class="hub-link" href="https://hub.yoso.one">Yoso</a>. All works and images are the artist&rsquo;s own.</p>
   <p>心性 &middot; Rebirth</p>
