@@ -1,0 +1,197 @@
+/* Shinsei 心性 — site styles
+   Layout: one narrow reading column on washi, set off-centre; the home page
+   opens with 心性 hung vertically like a scroll, with a single gold line beside it. */
+
+:root {
+  /* Light: sumi on washi. Gold appears only as a single line. */
+  --washi: #ebeae5;        /* page ground, cool kōzo white */
+  --washi-deep: #e1e0da;   /* image mounts, placeholders */
+  --sumi: #1b1c21;         /* text, blue-black seiboku */
+  --usuzumi: #66686f;      /* secondary text */
+  --usuzumi-faint: #c8c8c2;/* rules */
+  --kon: #24304d;          /* indigo, links */
+  --kin: #a9873a;          /* gold line */
+
+  --font-display: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-body: "EB Garamond", "Garamond", "Times New Roman", serif;
+  --font-small: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+
+  --step--1: 0.84rem;
+  --step-0: 1.125rem;
+  --step-1: 1.4rem;
+  --step-2: 1.9rem;
+  --step-3: 2.6rem;
+
+  --measure: 36rem;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  color-scheme: light;
+}
+
+/* Dark: konshi kindei — gold on indigo night. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --washi: #131a2b; --washi-deep: #1a2236; --sumi: #e5e1d5; --usuzumi: #9aa0ad;
+    --usuzumi-faint: #2d3651; --kon: #c9b27a; --kin: #c9a55a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --washi: #131a2b; --washi-deep: #1a2236; --sumi: #e5e1d5; --usuzumi: #9aa0ad;
+  --usuzumi-faint: #2d3651; --kon: #c9b27a; --kin: #c9a55a; color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--washi);
+  color: var(--sumi);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--kon); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { text-decoration-color: var(--kin); }
+:focus-visible { outline: 2px solid var(--kin); outline-offset: 3px; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.25; text-wrap: balance; margin: 0; }
+
+.page { max-width: 64rem; margin: 0 auto; }
+
+/* Header */
+.site-header {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 0.75rem 2rem; padding-block: 1.75rem 0;
+}
+.mark { font-family: var(--font-display); font-size: var(--step-1); color: var(--sumi); text-decoration: none; letter-spacing: 0.02em; }
+.mark span { font-family: var(--font-body); font-size: var(--step-0); color: var(--usuzumi); margin-left: 0.5rem; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; font-family: var(--font-small); font-size: var(--step--1); }
+.site-nav a { color: var(--usuzumi); text-decoration: none; padding-block: 0.25rem; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--sumi); }
+.site-nav a[aria-current="page"] { border-bottom: 1px solid var(--kin); }
+
+main { padding-block: 3.5rem 5rem; }
+
+/* Home hero: the scroll */
+.hero {
+  display: grid;
+  grid-template-columns: auto 1px minmax(0, var(--measure));
+  gap: clamp(1.25rem, 5vw, 4rem);
+  align-items: start;
+  padding-left: clamp(0rem, 6vw, 5rem);
+}
+.hero-kanji {
+  display: flex; flex-direction: column; gap: 0.12em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(5rem, 15vw, 10.5rem);
+  line-height: 1;
+  margin: 0;
+  color: var(--sumi);
+}
+.kindei {
+  width: 1px; align-self: stretch; background: var(--kin);
+  transform-origin: top; animation: draw 2.4s cubic-bezier(.4,0,.2,1) both;
+}
+@keyframes draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .kindei { animation: none; } }
+
+.hero-text { padding-top: 0.5rem; min-width: 0; }
+.hero-text h1 { font-size: var(--step-3); margin-bottom: 1.25rem; }
+.essence { font-style: italic; font-size: var(--step-1); line-height: 1.45; color: var(--sumi); margin: 0 0 1.5rem; }
+.hero-text p { margin: 0 0 1rem; }
+.hero-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; margin-top: 1.75rem; font-family: var(--font-small); font-size: var(--step--1); }
+
+@media (max-width: 560px) {
+  .hero { grid-template-columns: auto 1px minmax(0, 1fr); padding-left: 0; gap: 1rem; }
+  .hero-kanji { font-size: 4.5rem; }
+  .hero-text h1 { font-size: var(--step-2); }
+  .essence { font-size: 1.2rem; }
+}
+
+/* Sections */
+.section { margin-top: 5rem; }
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; margin-bottom: 1.75rem; border-top: 1px solid var(--usuzumi-faint); padding-top: 1rem; }
+.section-head h2 { font-size: var(--step-2); }
+.section-head h2 .ja { font-size: var(--step-0); color: var(--usuzumi); margin-left: 0.6rem; font-weight: 400; }
+.section-head p { margin: 0; color: var(--usuzumi); font-size: var(--step--1); font-family: var(--font-small); }
+
+.prose { max-width: var(--measure); }
+.prose p { margin: 0 0 1.1rem; }
+.prose h2 { font-size: var(--step-2); margin: 3rem 0 1rem; }
+.prose h3 { font-size: var(--step-1); margin: 2.25rem 0 0.75rem; }
+.page-title { font-size: var(--step-3); margin-bottom: 0.5rem; }
+.page-sub { color: var(--usuzumi); font-family: var(--font-small); font-size: var(--step--1); margin: 0 0 3rem; }
+.lede { font-size: var(--step-1); line-height: 1.5; font-style: italic; }
+
+/* Works */
+.works { display: grid; gap: 2.5rem 1.75rem; align-items: end; }
+.works--scrolls { grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); }
+.works--paintings { grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+.work { margin: 0; min-width: 0; }
+.work button {
+  all: unset; display: block; width: 100%; cursor: zoom-in;
+}
+.work button:focus-visible { outline: 2px solid var(--kin); outline-offset: 4px; }
+.work-frame { background: var(--washi-deep); max-width: 100%; display: grid; place-items: center; overflow: hidden; }
+.work-frame img { width: 100%; height: 100%; object-fit: cover; }
+.placeholder { display: flex; flex-direction: column; line-height: 1.1; font-family: var(--font-display); color: var(--usuzumi); font-size: 1.5rem; opacity: 0.55; }
+
+/* Home: one row at a fixed height, widths follow each work's proportions */
+.works-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 2.5rem 2rem; }
+.works-row .work { flex: 0 1 auto; max-width: 100%; }
+.works-row .work-frame { height: clamp(15rem, 34vw, 24rem); width: auto; }
+.work figcaption { margin-top: 0.75rem; display: grid; gap: 0.1rem; }
+.work-title { font-family: var(--font-display); font-size: 1.02rem; }
+.work-meta { font-family: var(--font-small); font-size: 0.78rem; color: var(--usuzumi); line-height: 1.5; }
+
+/* Viewer */
+.viewer {
+  border: 0; padding: 0; margin: 0; width: 100%; max-width: 100%; height: 100%; max-height: 100%;
+  background: var(--washi); color: var(--sumi);
+}
+.viewer::backdrop { background: var(--washi); }
+.viewer-inner {
+  display: grid; grid-template-rows: auto 1fr auto; height: 100%; gap: 1rem;
+  padding: calc(1rem + env(safe-area-inset-top, 0px)) var(--gutter-r) calc(1.25rem + env(safe-area-inset-bottom, 0px)) var(--gutter-l);
+}
+.viewer-close {
+  justify-self: end; font-family: var(--font-small); font-size: var(--step--1);
+  background: none; border: 1px solid var(--usuzumi-faint); color: var(--sumi); padding: 0.4rem 0.9rem; cursor: pointer;
+}
+.viewer-stage { min-height: 0; display: grid; place-items: center; }
+.viewer-stage img { max-height: 100%; width: auto; max-width: 100%; object-fit: contain; }
+.viewer-stage .work-frame { height: 100%; max-height: 70vh; }
+.viewer-caption { text-align: center; }
+.viewer-caption .work-title { font-size: var(--step-1); }
+.viewer-caption p { margin: 0.35rem auto 0; max-width: var(--measure); font-size: 1rem; color: var(--usuzumi); }
+
+/* Writings list */
+.writings { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.75rem; max-width: 44rem; }
+.writings li { display: grid; gap: 0.4rem; }
+.writings h3 { font-size: var(--step-1); }
+.writings h3 .ja { color: var(--usuzumi); font-size: var(--step-0); margin-left: 0.4rem; }
+.writings p { margin: 0; }
+.status { font-family: var(--font-small); font-size: 0.78rem; color: var(--usuzumi); }
+
+/* Contact */
+.contact-list { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0.6rem 2rem; margin: 0; }
+.contact-list dt { font-family: var(--font-small); font-size: var(--step--1); color: var(--usuzumi); padding-top: 0.2rem; }
+.contact-list dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 480px) { .contact-list { grid-template-columns: 1fr; gap: 0.1rem; } .contact-list dd { margin-bottom: 0.9rem; } }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--usuzumi-faint); padding-block: 1.5rem 2.5rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem;
+  font-family: var(--font-small); font-size: 0.78rem; color: var(--usuzumi);
+}
+.site-footer p { margin: 0; }
+.hub-link { color: var(--sumi); }

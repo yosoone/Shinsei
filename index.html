@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shinsei 心性</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Shinsei 心性: sumi-e paintings and hanging scrolls by Yoso, made as a trace of meditation practice.">
+<meta property="og:title" content="Shinsei 心性">
+<meta property="og:description" content="Shinsei 心性: sumi-e paintings and hanging scrolls by Yoso, made as a trace of meditation practice.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho+B1:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="page">
+<header class="site-header">
+  <a class="mark" href="index.html">心性<span>Shinsei</span></a>
+  <nav class="site-nav" aria-label="Main">
+<a href="index.html" aria-current="page">Home</a>
+<a href="works.html">Works</a>
+<a href="practice.html">Practice</a>
+<a href="writings.html">Writings</a>
+<a href="contact.html">Contact</a>
+  </nav>
+</header>
+<main>
+
+<section class="hero" aria-labelledby="hero-title">
+  <p class="hero-kanji" lang="ja" aria-label="心性"><span aria-hidden="true">心</span><span aria-hidden="true">性</span></p>
+  <span class="kindei" aria-hidden="true"></span>
+  <div class="hero-text">
+    <h1 id="hero-title">Shinsei: Rebirth</h1>
+    <p class="essence">A trace of cultivated peace, offered as refuge, and perhaps a doorway into practice.</p>
+    <p>Shinsei is a series of sumi-e paintings and hanging scrolls. Each one is made from meditation and Reiki practice, within a Buddhist and Shinto frame. The work begins inward. If something in it reaches you, that is a consequence of the practice, not its aim.</p>
+    <div class="hero-links">
+      <a href="works.html">See the works</a>
+      <a href="practice.html">Read about the practice</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="selected">
+  <div class="section-head">
+    <h2 id="selected">Selected works</h2>
+    <p><a href="works.html">All scrolls and paintings</a></p>
+  </div>
+  <div class="works-row" data-works="home"></div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <p>&copy; 2026 <a class="hub-link" href="https://hub.yoso.one">Yoso</a>. All works and images are the artist&rsquo;s own.</p>
+  <p>心性 &middot; Rebirth</p>
+</footer>
+</div>
+<dialog class="viewer" id="viewer" aria-label="Work viewer">
+  <div class="viewer-inner">
+    <button type="button" class="viewer-close">Close</button>
+    <div class="viewer-stage"></div>
+    <div class="viewer-caption">
+      <span class="work-title"></span>
+      <p class="viewer-meta"></p>
+      <p class="viewer-note" hidden></p>
+    </div>
+  </div>
+</dialog>
+<script src="assets/works.js"></script>
+<script src="assets/gallery.js"></script>
+</body>
+</html>

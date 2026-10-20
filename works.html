@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Works · Shinsei 心性</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Shinsei 心性: sumi-e paintings and hanging scrolls by Yoso, made as a trace of meditation practice.">
+<meta property="og:title" content="Works · Shinsei 心性">
+<meta property="og:description" content="Shinsei 心性: sumi-e paintings and hanging scrolls by Yoso, made as a trace of meditation practice.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho+B1:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="page">
+<header class="site-header">
+  <a class="mark" href="index.html">心性<span>Shinsei</span></a>
+  <nav class="site-nav" aria-label="Main">
+<a href="index.html">Home</a>
+<a href="works.html" aria-current="page">Works</a>
+<a href="practice.html">Practice</a>
+<a href="writings.html">Writings</a>
+<a href="contact.html">Contact</a>
+  </nav>
+</header>
+<main>
+
+<h1 class="page-title">Works</h1>
+<p class="page-sub">Hanging scrolls and paintings in sumi on washi. Select a piece to see it larger.</p>
+
+<section class="section" aria-labelledby="scrolls" style="margin-top:2rem">
+  <div class="section-head">
+    <h2 id="scrolls">Scrolls<span class="ja" lang="ja">掛軸</span></h2>
+  </div>
+  <div class="works works--scrolls" data-works="scroll"></div>
+</section>
+
+<section class="section" aria-labelledby="paintings">
+  <div class="section-head">
+    <h2 id="paintings">Paintings<span class="ja" lang="ja">墨絵</span></h2>
+  </div>
+  <div class="works works--paintings" data-works="painting"></div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <p>&copy; 2026 <a class="hub-link" href="https://hub.yoso.one">Yoso</a>. All works and images are the artist&rsquo;s own.</p>
+  <p>心性 &middot; Rebirth</p>
+</footer>
+</div>
+<dialog class="viewer" id="viewer" aria-label="Work viewer">
+  <div class="viewer-inner">
+    <button type="button" class="viewer-close">Close</button>
+    <div class="viewer-stage"></div>
+    <div class="viewer-caption">
+      <span class="work-title"></span>
+      <p class="viewer-meta"></p>
+      <p class="viewer-note" hidden></p>
+    </div>
+  </div>
+</dialog>
+<script src="assets/works.js"></script>
+<script src="assets/gallery.js"></script>
+</body>
+</html>
