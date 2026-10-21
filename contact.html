@@ -33,11 +33,29 @@
   <h1 class="page-title">Contact</h1>
   <p class="page-sub">For exhibitions, commissions and enquiries about the works.</p>
   <p>Paintings and scrolls can be seen by arrangement. Write with the work you are interested in, or simply to say hello.</p>
-  <dl class="contact-list">
-    <!-- Replace the two lines below with your real details. -->
-    <dt>Email</dt><dd>your-address@example.com</dd>
-    <dt>Instagram</dt><dd>@your-handle</dd>
-  </dl>
+  <!-- Contact form: posts to the Yoso forms Worker on Cloudflare (forms.yoso.one, code in the yosokuro repo's worker/), which emails Yoso. -->
+  <form class="contact-form" id="cf" action="https://forms.yoso.one/contact" method="post" novalidate>
+    <div class="cf-pair">
+      <div><label for="cfName">Name</label><input id="cfName" name="name" autocomplete="name" maxlength="120" required></div>
+      <div><label for="cfEmail">Email</label><input id="cfEmail" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+    </div>
+    <div><label for="cfTopic">About</label>
+      <select id="cfTopic" name="topic">
+        <option value="work">A painting or scroll</option>
+        <option value="commission">A commission</option>
+        <option value="exhibition">An exhibition</option>
+        <option value="general" selected>Something else</option>
+      </select></div>
+    <div><label for="cfWork">Which work <span class="cf-opt">(optional)</span></label><input id="cfWork" name="work" maxlength="160"></div>
+    <div class="cf-hp" aria-hidden="true"><label for="cfWebsite">Leave this empty</label><input id="cfWebsite" name="website" tabindex="-1" autocomplete="off"></div>
+    <div><label for="cfMessage">Message</label><textarea id="cfMessage" name="message" maxlength="5000" required></textarea></div>
+    <label class="cf-join" for="cfJoin"><input type="checkbox" id="cfJoin" name="subscribe" value="shinsei"><span>Also join the Shinsei mailing list<small>New paintings, scrolls and exhibitions now and then. Buttondown emails you to confirm.</small></span></label>
+    <!-- Turnstile: Cloudflare's spam check (widget 'Yoso forms'); shows only if a visitor needs to prove they are human. -->
+    <div class="cf-turnstile" id="cfTs" data-sitekey="0x4AAAAAAFeWKK51BEJbKJSu" data-appearance="interaction-only"></div>
+    <div class="cf-send"><button type="submit" id="cfSend">Send</button><span id="cfMsg" role="status" aria-live="polite"></span></div>
+    <p class="cf-note">Your name, email and message go to Yoso by email and are used only to reply. Nothing is kept on this site. A spam check by Cloudflare runs in the background.</p>
+    <noscript><p class="cf-note">This form needs JavaScript to send.</p></noscript>
+  </form>
 </article>
 
 </main>
@@ -73,5 +91,7 @@
 </div>
 
 <script src="assets/list-choice.js" defer></script>
+<script src="assets/contact.js" defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
